@@ -5,7 +5,7 @@
 .gradle
 
 # Build output directies
-/build
+/build/
 
 # IntelliJ specific files/directories
 out
@@ -28,3 +28,6 @@ bin
 # Miscellaneous
 *.log
 .clover
+
+
+/buildSrc/build/

@@ -1,0 +1,35 @@
+plugins {
+    id 'java-gradle-plugin' 
+    id 'com.gradle.plugin-publish' version '0.10.0' 
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+  compile group: 'org.codehaus.plexus', name: 'plexus-container-default', version: '1.7.1'
+  compile group: 'org.sonatype.plexus', name: 'plexus-sec-dispatcher', version: '1.4'
+}
+
+version = '2.0.2-SNAPSHOT'
+
+pluginBundle {
+    website = 'https://github.com/datlowe/gradle-maven-publish-auth' 
+    vcsUrl = 'https://github.com/datlowe/gradle-maven-publish-auth.git' 
+    tags = ['maven', 'publish', 'auth', 'repository'] 
+}
+
+gradlePlugin {
+    plugins { 
+        authPlugin { 
+            id = 'org.datlowe.maven-publish-auth' 
+            displayName = 'maven-publish-auth' 
+            description = 'Gradle plugin for managing authentication of upload tasks' 
+            implementationClass = 'org.hibernate.build.gradle.publish.auth.maven.AuthenticationManager'
+        }
+    }
+}
+
+

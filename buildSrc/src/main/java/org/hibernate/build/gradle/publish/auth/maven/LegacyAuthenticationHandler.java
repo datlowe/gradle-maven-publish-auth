@@ -34,7 +34,7 @@ import org.gradle.api.tasks.Upload;
  * Acts as the main authentication coordinator for the upload.  It will delegate to all {@link CredentialsProvider}
  * instances registered with the {@link CredentialsProviderRegistry} looking for any that provide authentication
  * against the maven repository defined for each upload task.
- * <p/>
+ *
  * <strong>
  *     IMPL NOTE : This will need to change drastically whenever Gradle moves to its {@code Publication} scheme for uploads.
  * </strong>
@@ -103,7 +103,7 @@ public class LegacyAuthenticationHandler implements Action<Upload> {
 	}
 
 	/**
-	 * A wrapper around the {@link org.apache.maven.artifact.ant.RemoteRepository} class from the maven ant tasks due to
+	 * A wrapper around the <i>org.apache.maven.artifact.ant.RemoteRepository</i> class from the maven ant tasks due to
 	 * some change in Gradle causing classloader problems.
 	 */
 	public static class Repository {
