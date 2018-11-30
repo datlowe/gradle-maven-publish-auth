@@ -1,1 +1,34 @@
+plugins {
+	id 'maven-publish'
+}
+
 apply plugin: org.hibernate.build.gradle.publish.auth.maven.AuthenticationManager
+
+repositories {
+  maven {
+    name = 'datlowe'
+    url = 'https://some-priavte-repo.url/maven'
+  }
+}
+
+
+group = 'org.datlowe'
+version = '1.0-SNAPSHOT'
+
+publishing {
+  publications {
+      testPub(MavenPublication) {
+        artifactId "test_artifact"
+      }
+  }
+
+	repositories {
+		maven {
+			name 'datlowe'
+			url 'https://some-priavte-repo.url/maven'
+		}
+	}
+}
+
+
+defaultTasks 'publish'

@@ -28,11 +28,18 @@ import org.gradle.api.Project;
 import org.gradle.api.artifacts.repositories.MavenArtifactRepository;
 import org.gradle.api.artifacts.repositories.PasswordCredentials;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 
  * @author Artur Kotyrba
+ * @author Jan Dedek
  */
 public class RepositoryAuthenticationHandler implements Action<MavenArtifactRepository> {
+
+	private final static Logger log = LoggerFactory.getLogger(RepositoryAuthenticationHandler.class);
+  
 	private final CredentialsProviderRegistry credentialsProviderRegistry;
 
 	public RepositoryAuthenticationHandler(CredentialsProviderRegistry credentialsProviderRegistry) {
@@ -54,6 +61,8 @@ public class RepositoryAuthenticationHandler implements Action<MavenArtifactRepo
 		PasswordCredentials passwordCredentials = mavenArtifactRepository.getCredentials();
 		passwordCredentials.setUsername( credentials.getUserName() );
 		passwordCredentials.setPassword( credentials.getPassword() );
+    
+    log.info("Maven credentials set for repository '{}', user name: '{}'", id, credentials.getUserName());
 	}
 
 	private Credentials locateAuthenticationCredentials(String repositoryId) {

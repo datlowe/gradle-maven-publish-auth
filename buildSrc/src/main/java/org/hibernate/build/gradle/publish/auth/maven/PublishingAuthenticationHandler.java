@@ -29,12 +29,20 @@ import org.gradle.api.artifacts.repositories.MavenArtifactRepository;
 import org.gradle.api.artifacts.repositories.PasswordCredentials;
 import org.gradle.api.publish.maven.tasks.PublishToMavenRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 /**
  * Acts as the main authentication coordinator for "publish" tasks using the Publication API.
  *
  * @author Steve Ebersole
+ * @author Jan Dedek
  */
 public class PublishingAuthenticationHandler implements Action<PublishToMavenRepository> {
+	private final static Logger log = LoggerFactory.getLogger(PublishingAuthenticationHandler.class);
+
+
 	private final CredentialsProviderRegistry credentialsProviderRegistry;
 
 	public PublishingAuthenticationHandler(CredentialsProviderRegistry credentialsProviderRegistry) {
@@ -67,6 +75,8 @@ public class PublishingAuthenticationHandler implements Action<PublishToMavenRep
 		PasswordCredentials passwordCredentials = publishToMavenRepository.getRepository().getCredentials();
 		passwordCredentials.setUsername( credentials.getUserName() );
 		passwordCredentials.setPassword( credentials.getPassword() );
+    
+    log.info("Maven credentials set for publish repository '{}', user name: '{}'", id, credentials.getUserName());
 	}
 
 	private Credentials locateAuthenticationCredentials(String repositoryId) {
