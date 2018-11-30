@@ -13,7 +13,7 @@ dependencies {
   compile group: 'org.sonatype.plexus', name: 'plexus-sec-dispatcher', version: '1.4'
 }
 
-version = '2.0.2'
+version = '2.0.3-SNAPSHOT'
 
 pluginBundle {
     website = 'https://github.com/datlowe/gradle-maven-publish-auth' 
