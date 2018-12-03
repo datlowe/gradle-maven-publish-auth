@@ -1,9 +1,11 @@
-Version 2.0
-===========
-
 Gradle plugin facilitating publishing to authenticated Maven repositories without adding credential information
 directly in the build file or in random properties files.  Support for applying authentication information from
 Maven's settings.xml file is provided out-of-the-box.
+
+Version 2.0.2
+===========
+
+This verison (datlowe fork) is just a slight modification of the original plugin, with the purse to be deployed to the plugins.gradle.org portal.
 
 
 Applying plugin
@@ -11,7 +13,52 @@ Applying plugin
 
 To apply the plugin, simply specify:
 
-    apply plugin: 'maven-publish-auth'
+```gradle
+plugins {
+  id "org.datlowe.maven-publish-auth" version "2.0.2"
+}
+```
+
+See also https://plugins.gradle.org/plugin/org.datlowe.maven-publish-auth
+
+Example build script
+---------------
+
+```gradle
+plugins {
+	id 'maven-publish'
+	id "org.datlowe.maven-publish-auth" version "2.0.2"
+}
+
+repositories {
+	maven {
+		name = 'datlowe'
+		url = 'https://some-priavte-repo.url/maven'
+	}
+}
+
+group = 'org.datlowe'
+version = '1.0-SNAPSHOT'
+
+publishing {
+	publications {
+		testPub(MavenPublication) { artifactId "test_artifact" }
+	}
+
+	repositories {
+		maven {
+			name 'datlowe'
+			url 'https://some-priavte-repo.url/maven'
+		}
+	}
+}
+
+defaultTasks 'publish'
+```
+
+
+Implementatation
+---------------
 
 The plugin class is org.hibernate.build.gradle.publish.auth.maven.AuthenticationManager, whose purpose is really just
 to create an instance each of
