@@ -1,4 +1,4 @@
-Gradle plugin facilitating **publishing** to and **dowloading** form authenticated Maven repositories without adding credential information
+Gradle plugin facilitating **publishing to** and **dowloading form** authenticated Maven repositories without adding credential information
 directly in the build file or in random properties files.  Support for applying authentication information from
 Maven's settings.xml file is provided out-of-the-box.
 
