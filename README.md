@@ -139,6 +139,9 @@ in build file. Again, the bridge is the repository id.
         }
     }
 
+Not supported
+-------------
+
 Currently plugin does not apply authentication information to buildscript repositories, so following won't work:
 
     buildscript {
