@@ -26,7 +26,7 @@ gradlePlugin {
         authPlugin { 
             id = 'org.datlowe.maven-publish-auth' 
             displayName = 'maven-publish-auth' 
-            description = 'Gradle plugin for managing authentication of upload tasks' 
+            description = 'Gradle plugin for managing authentication of upload and download tasks' 
             implementationClass = 'org.hibernate.build.gradle.publish.auth.maven.AuthenticationManager'
         }
     }
