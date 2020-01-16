@@ -2,6 +2,19 @@ Gradle plugin facilitating **publishing to** and **dowloading form** authenticat
 directly in the build file or in random properties files.  Support for applying authentication information from
 Maven's settings.xml file is provided out-of-the-box.
 
+Version 3.0.0 and later
+===========
+
+Since version 3.0.0 of the original [sebersole/gradle-maven-publish-auth](https://github.com/sebersole/gradle-maven-publish-auth) this (datlowe) fork is not need any more. Everything is working the same as in datlowe version 2.0.2 (see below). Just use:
+
+```gradle
+plugins {
+  id "org.hibernate.build.maven-repo-auth" version "3.0.0" //or later version, if exists
+}
+```
+
+Archiving this repository because it is not needed any more.
+
 Version 2.0.2
 ===========
 
